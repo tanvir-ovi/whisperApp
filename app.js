@@ -28,7 +28,7 @@ app.use(passport.session());
 mongoose.set( 'useUnifiedTopology', 'true' );
 mongoose.set('useFindAndModify', 'true');
 mongoose.set('useCreateIndex','true');
-mongoose.connect('mongodb://localhost:27017/userDB', { 
+mongoose.connect('mongodb+srv://tanvirOvi:khankirpola06@cluster0.ynwby.mongodb.net/usersDB', { 
 	useNewUrlParser: true 
 });
 
@@ -196,7 +196,10 @@ app.route('/register')
 			});
 	});
 
-
-app.listen(3000, function(){
-	console.log('app is running on port 3000');
+let port = process.env.PORT;
+if (port == null || port == "") {
+  port = 3000;
+}
+app.listen(port, function(){
+	console.log(`app is running on port ${port}`);
 });
